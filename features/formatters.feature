@@ -10,8 +10,8 @@ Feature: Formatters
             | a | b |
       """
     When I run cucumber-js with all formatters
-    Then the "event-protocol" formatter output matches the fixture "formatters/gherkin-error.ndjson"
-    Then the "json" formatter output matches the fixture "formatters/gherkin-error.json"
+    Then the "event-protocol" formatter output matches the fixture "formatters/gherkin-error.event-protocol"
+    Then the "event-protocol-json" formatter output matches the fixture "formatters/gherkin-error.event-protocol-json"
     And it fails
 
   Scenario: rejected pickle
@@ -22,8 +22,8 @@ Feature: Formatters
           Given a step
       """
     When I run cucumber-js with all formatters and `--tags @a`
-    Then the "event-protocol" formatter output matches the fixture "formatters/rejected-pickle.ndjson"
-    Then the "json" formatter output matches the fixture "formatters/rejected-pickle.json"
+    Then the "event-protocol" formatter output matches the fixture "formatters/rejected-pickle.event-protocol"
+    Then the "event-protocol-json" formatter output matches the fixture "formatters/rejected-pickle.event-protocol-json"
 
   Scenario: passed
     Given a file named "features/a.feature" with:
@@ -39,7 +39,8 @@ Feature: Formatters
       Given(/^a step$/, function() {})
       """
     When I run cucumber-js with all formatters
-    Then the "event-protocol" formatter output matches the fixture "formatters/passed.ndjson"
+    Then the "event-protocol" formatter output matches the fixture "formatters/passed.event-protocol"
+    Then the "event-protocol-json" formatter output matches the fixture "formatters/passed.event-protocol-json"
     Then the "json" formatter output matches the fixture "formatters/passed.json"
 
   Scenario: failed
@@ -56,7 +57,8 @@ Feature: Formatters
       Given(/^a step$/, function(callback) { callback(new Error('my error')) })
       """
     When I run cucumber-js with all formatters
-    Then the "event-protocol" formatter output matches the fixture "formatters/failed.ndjson"
+    Then the "event-protocol" formatter output matches the fixture "formatters/failed.event-protocol"
+    Then the "event-protocol-json" formatter output matches the fixture "formatters/failed.event-protocol-json"
     Then the "json" formatter output matches the fixture "formatters/failed.json"
     And it fails
 
@@ -83,5 +85,5 @@ Feature: Formatters
       })
       """
     When I run cucumber-js with all formatters and `--retry 1`
-    Then the "event-protocol" formatter output matches the fixture "formatters/retried.ndjson"
-    Then the "json" formatter output matches the fixture "formatters/retried.json"
+    Then the "event-protocol" formatter output matches the fixture "formatters/retried.event-protocol"
+    Then the "event-protocol-json" formatter output matches the fixture "formatters/retried.event-protocol-json"

@@ -1,4 +1,5 @@
 import EventProtocolFormatter from './event_protocol_formatter'
+import EventProtocolJsonFormatter from './event_protocol_json_formatter'
 import getColorFns from './get_color_fns'
 import JavascriptSnippetSyntax from './step_definition_snippet_builder/javascript_snippet_syntax'
 import JsonFormatter from './json_formatter'
@@ -27,6 +28,8 @@ export default class FormatterBuilder {
     switch (type) {
       case 'event-protocol':
         return EventProtocolFormatter
+      case 'event-protocol-json':
+        return EventProtocolJsonFormatter
       case 'json':
         return JsonFormatter
       case 'progress':

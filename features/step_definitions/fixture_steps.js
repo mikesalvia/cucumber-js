@@ -4,6 +4,7 @@ import { Then } from '../../'
 import { expect } from 'chai'
 import {
   normalizeEventProtocolOutput,
+  normalizeEventProtocolJsonOutput,
   normalizeJsonOutput,
 } from '../support/formatter_output_helpers'
 import fs from 'mz/fs'
@@ -18,6 +19,8 @@ Then(
     const expected = require(fixturePath)
     if (formatter === 'event-protocol') {
       actual = normalizeEventProtocolOutput(actual, this.tmpDir)
+    } else if (formatter === 'event-protocol-json') {
+      actual = normalizeEventProtocolJsonOutput(actual, this.tmpDir)
     } else if (formatter === 'json') {
       actual = normalizeJsonOutput(actual, this.tmpDir)
     }
