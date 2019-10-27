@@ -22,10 +22,7 @@ When(
       args = ''
     }
     // event-protocol is always outputted as part of run
-    const formats = [
-      'event-protocol-json:event-protocol-json.out',
-      'json:json.out',
-    ]
+    const formats = ['json:json.out']
     args += ' ' + formats.map(f => `--format ${f}`).join(' ')
     args = Mustache.render(args, this)
     args = stringArgv(args)

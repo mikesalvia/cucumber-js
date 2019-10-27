@@ -58,23 +58,6 @@ export function normalizeEventProtocolOutput(str, cwd) {
   return events
 }
 
-export function normalizeEventProtocolJsonOutput(str, cwd) {
-  const json = JSON.parse(str || '{}')
-  _.each(json.gherkinDocuments, obj => {
-    normalizeObject(obj, cwd)
-  })
-  _.each(json.pickles, obj => {
-    normalizeObject(obj, cwd)
-  })
-  _.each(json.testCaseAttempts, obj => {
-    normalizeObject(obj.testCase, cwd)
-    obj.testSteps.forEach(s => {
-      normalizeObject(s, cwd)
-    })
-  })
-  return json
-}
-
 export function normalizeJsonOutput(str, cwd) {
   const json = JSON.parse(str || '{}')
   _.each(json, feature => {

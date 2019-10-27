@@ -11,7 +11,6 @@ Feature: Formatters
       """
     When I run cucumber-js with all formatters
     Then the "event-protocol" formatter output matches the fixture "formatters/gherkin-error.event-protocol"
-    Then the "event-protocol-json" formatter output matches the fixture "formatters/gherkin-error.event-protocol-json"
     And it fails
 
   Scenario: rejected pickle
@@ -23,7 +22,6 @@ Feature: Formatters
       """
     When I run cucumber-js with all formatters and `--tags @a`
     Then the "event-protocol" formatter output matches the fixture "formatters/rejected-pickle.event-protocol"
-    Then the "event-protocol-json" formatter output matches the fixture "formatters/rejected-pickle.event-protocol-json"
 
   Scenario: passed
     Given a file named "features/a.feature" with:
@@ -40,7 +38,6 @@ Feature: Formatters
       """
     When I run cucumber-js with all formatters
     Then the "event-protocol" formatter output matches the fixture "formatters/passed.event-protocol"
-    Then the "event-protocol-json" formatter output matches the fixture "formatters/passed.event-protocol-json"
     Then the "json" formatter output matches the fixture "formatters/passed.json"
 
   Scenario: failed
@@ -58,7 +55,6 @@ Feature: Formatters
       """
     When I run cucumber-js with all formatters
     Then the "event-protocol" formatter output matches the fixture "formatters/failed.event-protocol"
-    Then the "event-protocol-json" formatter output matches the fixture "formatters/failed.event-protocol-json"
     Then the "json" formatter output matches the fixture "formatters/failed.json"
     And it fails
 
@@ -86,4 +82,3 @@ Feature: Formatters
       """
     When I run cucumber-js with all formatters and `--retry 1`
     Then the "event-protocol" formatter output matches the fixture "formatters/retried.event-protocol"
-    Then the "event-protocol-json" formatter output matches the fixture "formatters/retried.event-protocol-json"
