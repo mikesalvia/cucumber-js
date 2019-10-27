@@ -61,8 +61,14 @@ export function normalizeEventProtocolOutput(str, cwd) {
 export function normalizeJsonOutput(str, cwd) {
   const json = JSON.parse(str || '{}')
   _.each(json, feature => {
+    if (feature.uri) {
+      feature.uri = normalizeUri(feature.uri, cwd)
+    }
     _.each(feature.elements, element => {
       _.each(element.steps, step => {
+        if (step.match && step.match.location) {
+          step.match.location = normalizeUri(step.match.location, cwd)
+        }
         if (step.result) {
           if (step.result.duration) {
             step.result.duration = 0
